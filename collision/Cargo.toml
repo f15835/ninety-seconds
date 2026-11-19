@@ -1,0 +1,10 @@
+[package]
+name = "collision"
+version.workspace = true
+edition.workspace = true
+description = "碰撞层：广相 BVH + 胶囊 sweep。全部定点，全部可 golden test。"
+
+[dependencies]
+sim-core = { path = "../sim-core" }
+# 依然零第三方依赖。物理层一旦引入外部数学库，
+# 确定性就不再由我们掌控。

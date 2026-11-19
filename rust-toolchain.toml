@@ -1,0 +1,7 @@
+[toolchain]
+# 故意 pin 死。换编译器版本 = 换优化器 = 可能换浮点折叠行为。
+# 我们有 golden test 兜着，但流程上仍然要求：升级前先跑一遍哈希链。
+channel = "1.83.0"
+components = ["rustfmt", "clippy"]
+targets = ["wasm32-unknown-unknown"]
+profile = "minimal"

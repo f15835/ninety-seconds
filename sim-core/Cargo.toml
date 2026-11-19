@@ -1,0 +1,12 @@
+[package]
+name = "sim-core"
+version.workspace = true
+edition.workspace = true
+description = "90 秒：确定性模拟内核。固定 20Hz tick，禁用浮点。"
+
+[dependencies]
+# 刻意为空。见 workspace Cargo.toml 里的说明。
+# 被否掉的候选：
+#   serde/bincode  -> 快照用 16 字节定长手写编解码，热路径上不要派生宏
+#   rand           -> 世界是时刻表，没有随机性，这是回放能逐位对齐的前提
+#   glam/tinyvec   -> 浮点向量库，第一条就把我们杀了

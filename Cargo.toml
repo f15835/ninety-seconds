@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+members = ["sim-core", "collision"]
+# 烘焙器是工具，不是运行时，单独 workspace。
+exclude = ["tools"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+opt-level = "s"
+
+# 注意：这里是空的。
+# 模拟内核 sim-core 刻意零依赖 —— 确定性要求所有哈希/数学/迭代器实现
+# 都在我们自己的视线内，任何第三方 crate 的版本漂移都可能改变 tick 结果。
